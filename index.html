@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Photoshoot Services 1- Professional AI-Generated Product Images</title>
+    <meta name="description" content="Turn your product images into professional photos & videos using AI. Web3-powered AI photoshoot services.">
+    <meta property="og:title" content="AI Photoshoot Services">
+    <meta property="og:description" content="Professional AI-generated product images and videos">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://yourusername.github.io/reponame/assets/og-image.jpg">
+    
+    <!-- TailwindCSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Framer Motion via CDN -->
+    <script src="https://unpkg.com/framer-motion@9.5.0/dist/framer-motion.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: #0a0a1f;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #6366f1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+        }
+        
+        .neon-border {
+            border: 1px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5), inset 0 0 10px rgba(99, 102, 241, 0.2);
+        }
+        
+        .neon-accent {
+            text-shadow: 0 0 5px #ec4899, 0 0 10px #ec4899, 0 0 15px #ec4899;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4), 0 10px 10px -5px rgba(99, 102, 241, 0.3);
+        }
+        
+        .package-card {
+            transition: all 0.4s ease;
+        }
+        
+        .package-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s linear infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Navigation -->
+    <nav class="glass-effect fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">AI Photoshoot</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a>
+                <a href="#pricing" class="hover:text-accent transition-colors">Pricing</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden glass-effect md:hidden px-4 py-2">
+            <div class="flex flex-col space-y-3 py-3">
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a>
+                <a href="#pricing" class="hover:text-accent transition-colors">Pricing</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">AI Photoshoot Services</h1>
+            <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">Turn your product images into professional photos & videos using AI</p>
+            <button id="get-started-btn" class="bg-gradient-to-r from-primary to-accent text-white font-bold py-4 px-8 rounded-full text-lg hover:opacity-90 transition-all shadow-lg shadow-primary/30">
+                Get Started
+            </button>
+            
+            <div class="mt-20 glass-effect rounded-2xl p-6 max-w-4xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4">
+                        <i class="fas fa-robot text-4xl mb-3 text-accent"></i>
+                        <h3 class="font-semibold">AI Powered</h3>
+                    </div>
+                    <div class="text-center p-4">
+                        <i class="fas fa-bolt text-4xl mb-3 text-accent"></i>
+                        <h3 class="font-semibold">Fast Delivery</h3>
+                    </div>
+                    <div class="text-center p-4">
+                        <i class="fas fa-money-bill-wave text-4xl mb-3 text-accent"></i>
+                        <h3 class="font-semibold">Cost Effective</h3>
+                    </div>
+                    <div class="text-center p-4">
+                        <i class="fas fa-gem text-4xl mb-3 text-accent"></i>
+                        <h3 class="font-semibold">High Quality</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-cube text-5xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center">AI Product Photoshoot</h3>
+                    <p class="text-light/70">Transform your product images with professional AI-generated backgrounds and styles.</p>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-tshirt text-5xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center">AI Fashion Photoshoot</h3>
+                    <p class="text-light/70">Showcase your fashion items with AI-generated models and environments.</p>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-video text-5xl text-accent"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center">AI Video Creation</h3>
+                    <p class="text-light/70">Create engaging promotional videos from your product images using AI technology.</p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="glass-effect rounded-2xl p-6 card-hover">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-ad text-5xl text-primary"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4 text-center">AI Ads Content</h3>
+                    <p class="text-light/70">Generate high-converting ad creatives for social media and marketing campaigns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4 bg-dark/50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Our Portfolio</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/8z5x5v3X/Whats-App-Image-2025-08-31-at-03-52-05-d424f835.jpg" alt="AI Product Photoshoot" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/jqf7pkSZ/Whats-App-Image-2025-08-31-at-03-52-09-5b61e980.jpg" alt="AI Fashion Photoshoot" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/sD6sw3C8/Whats-App-Image-2025-08-31-at-03-52-09-f9a8ece5.jpg" alt="AI Video Creation" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/mgyq8w9r/Whats-App-Image-2025-08-31-at-03-52-05-a9885b99.jpg" alt="AI Ads Content" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/85ZN9Grj/Whats-App-Image-2025-08-31-at-03-52-02-76acc4e2.jpg" alt="Product Showcase" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/DmVDYp5S/Whats-App-Image-2025-08-31-at-03-52-02-ff03a46e.jpg" alt="AI Enhanced Image" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+              <!-- Portfolio Item 6 -->
+                <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/Cxxtr8sH/Whats-App-Image-2025-08-31-at-03-52-06-2ecc0ad9.jpg" alt="AI Enhanced Image" class="w-full h-64 object-cover" onclick="openModal(this)">
+                </div>
+              <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/C5J7bvXy/Whats-App-Image-2025-08-31-at-03-52-11-b757b6ed.jpg" alt="AI Enhanced Image" class="w-full h-64 object-cover" onclick="openModal(this)">
+            </div>
+              <div class="portfolio-item glass-effect">
+                    <img src="https://i.postimg.cc/SK8wchGw/Whats-App-Image-2025-08-31-at-03-52-11-9d70a384.jpg" alt="AI Enhanced Image" class="w-full h-64 object-cover" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Portfolio -->
+    <div id="portfolio-modal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-img" alt="Portfolio Item">
+    </div>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Our Packages</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Package -->
+                <div class="glass-effect neon-border rounded-2xl p-8 package-card">
+                    <h3 class="text-2xl font-bold text-center mb-4">Starter Package</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$29</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>5 AI-generated images</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>2 background themes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>48-hour delivery</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Basic editing</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Starter Package', 29)" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-primary/90 transition-colors">
+                        Select Plan
+                    </button>
+                </div>
+                
+                <!-- Business Package -->
+                <div class="glass-effect neon-border rounded-2xl p-8 package-card relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-sm">
+                        Popular
+                    </div>
+                    <h3 class="text-2xl font-bold text-center mb-4">Business Package</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$59</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>15 AI-generated images</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>2 AI videos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>5 background themes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>24-hour delivery</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Premium editing</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Business Package', 59)" class="w-full bg-gradient-to-r from-primary to-accent text-white font-bold py-3 rounded-lg hover:opacity-90 transition-all">
+                        Select Plan
+                    </button>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="glass-effect neon-border rounded-2xl p-8 package-card">
+                    <h3 class="text-2xl font-bold text-center mb-4">Premium Package</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$99</span>
+                    </div>
+                    <ul class="mb-8 space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>30 AI-generated images</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>5 AI videos</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Unlimited background themes</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Priority delivery (12 hours)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check-circle text-primary mr-2"></i>
+                            <span>Advanced editing & effects</span>
+                        </li>
+                    </ul>
+                    <button onclick="selectPackage('Premium Package', 99)" class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-primary/90 transition-colors">
+                        Select Plan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-dark/50">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl font-bold text-center mb-16">Contact Us</h2>
+            
+            <div class="glass-effect rounded-2xl p-8 mb-10">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-semibold mb-4">Get in touch with us directly on WhatsApp</h3>
+                    <a id="whatsapp-btn" href="https://wa.me/+8801710420579" class="inline-flex items-center bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">
+                        <i class="fab fa-whatsapp text-2xl mr-2"></i>
+                        Contact Us on WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <div class="glass-effect rounded-2xl p-8">
+                <h3 class="text-2xl font-semibold mb-6 text-center">Or send us a message</h3>
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block mb-2">Your Name</label>
+                        <input type="text" id="name" class="w-full glass-effect border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2">Your Email</label>
+                        <input type="email" id="email" class="w-full glass-effect border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div>
+                        <label for="message" class="block mb-2">Your Message</label>
+                        <textarea id="message" rows="5" class="w-full glass-effect border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-accent text-white font-bold py-3 rounded-lg hover:opacity-90 transition-all">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="glass-effect py-10 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold gradient-text">AI Photoshoot</a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
+                    <a href="#" class="hover:text-accent transition-colors">Home</a>
+                    <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                    <a href="#portfolio" class="hover:text-accent transition-colors">Portfolio</a>
+                    <a href="#pricing" class="hover:text-accent transition-colors">Pricing</a>
+                    <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-xl hover:text-accent transition-colors"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-xl hover:text-accent transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-xl hover:text-accent transition-colors"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p>Copyright © <span id="current-year"></span> AI Photoshoot. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Scroll to pricing section
+        document.getElementById('get-started-btn').addEventListener('click', function() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Portfolio modal functionality
+        function openModal(element) {
+            document.getElementById('modal-img').src = element.src;
+            document.getElementById('portfolio-modal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('portfolio-modal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('portfolio-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Package selection - redirect to WhatsApp with package details
+        function selectPackage(packageName, price) {
+            const message = `Hello! I'm interested in the ${packageName} for $${price}. Please provide more information.`;
+            const encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://wa.me/+8801710420579?text=${encodedMessage}`;
+        }
+        
+        // Update WhatsApp number based on package selection
+        document.querySelectorAll('#whatsapp-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const message = "Hello! I'm interested in your AI Photoshoot services. Can you provide more information?";
+                const encodedMessage = encodeURIComponent(message);
+                window.location.href = `https://wa.me/+8801710420579?text=${encodedMessage}`;
+            });
+        });
+        
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message (in a real application, you would send this data to a server)
+            alert('Thank you for your message! We will get back to you soon.');
+            document.getElementById('contact-form').reset();
+        });
+        
+        // Add subtle animations on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.card-hover, .package-card');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight && position.bottom >= 0) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize element styles for animation
+        document.querySelectorAll('.card-hover, .package-card').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial call in case elements are already in view
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
